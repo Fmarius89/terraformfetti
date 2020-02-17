@@ -14,5 +14,5 @@ variable "accessip" {
 }
 
 variable "target_id" {
-  type = list
+  type = list(string)
 }
