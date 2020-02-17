@@ -22,7 +22,7 @@ resource "aws_key_pair" "tf_auth" {
 }
 
 resource "aws_instance" "tf_server" {
-     #count = "${var.instance_count}"
+     count = "${var.instance_count}"
      instance_type = "${var.instance_type}"
      ami = "${data.aws_ami.server_ami.id}"
 
@@ -42,8 +42,8 @@ resource "aws_instance" "tf_server" {
        
 
      tags {
-         #Name = "tf_server-${count.index +1}"
-         Name = "tf_marius"
+         Name = "tf_server-${count.index +1}"
+         #Name = "tf_marius"
 }     
      key_name = "${aws_key_pair.tf_auth.id}"
      vpc_security_group_ids = ["${var.security_group}"]
