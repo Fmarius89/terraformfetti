@@ -12,7 +12,7 @@ module "networking" {
 
 module "compute" {
     source = "./compute"
-    #instance_count = "${var.instance_count}"
+    instance_count = "${var.instance_count}"
     key_name = "${var.key_name}"
     public_key_path = "${var.public_key_path}"
     subnets = "${module.networking.public_subnets}"
