@@ -6,7 +6,7 @@ variable "subnet_ips" {
     type = "list"
 }
 
-#variable "instance_count" {}
+variable "instance_count" {}
 
 variable "instance_type" {}
 

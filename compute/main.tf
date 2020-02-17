@@ -42,16 +42,11 @@ resource "aws_instance" "tf_server" {
 
 
      tags {
-<<<<<<< HEAD
-         Name = "tf_server-${count.index +1}"
-         #Name = "tf_marius"
-}     
-=======
          Name = "tf_server-${count.index +1}"
          #Name = "tf_marius"
 }
->>>>>>> fb6a8ad13b75e68b9f2662bbaa37cdd478ab389c
      key_name = "${aws_key_pair.tf_auth.id}"
      vpc_security_group_ids = ["${var.security_group}"]
      subnet_id = "${element(var.subnets, count.index)}"
  }
+
