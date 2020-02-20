@@ -10,3 +10,4 @@ key_name = "tf_key"
 public_key_path = "/opt/id_rsa.pub"
 server_instance_type = "t2.micro"
 instance_count = 2
+project_name = "cj-terraform-marius"

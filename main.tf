@@ -20,3 +20,8 @@ module "compute" {
     subnet_ips = "${module.networking.subnet_ips}"
     instance_type = "${var.server_instance_type}"
 }
+
+module "bucket" {
+    source = "./bucket" 
+    project_name = "${var.project_name}"
+}
