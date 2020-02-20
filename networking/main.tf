@@ -47,7 +47,7 @@ resource "aws_subnet" "tf_public_subnet" {
      map_public_ip_on_launch = true
      availability_zone = "${data.aws_availability_zones.available.names[count.index]}"
      tags {
-         Name = "tf_public_${count.index + 1}"
+         Name = "tf_public_${count.index + 2}"
  }
 }
 
