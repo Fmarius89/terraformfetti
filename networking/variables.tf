@@ -5,7 +5,8 @@ variable "vpc_cidr" {
 variable "public_cidrs" {
      default = [
          "172.40.1.0/24",
-         "172.40.2.0/24"
+         "172.40.2.0/24",
+         "172.40.3.0/24"
      ]
 }
 
