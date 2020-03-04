@@ -23,8 +23,8 @@ resource "aws_s3_bucket" "serverless" {
 }
  }
 
-provider "aws" {
-  region = "${var.region}"
+rovider "aws" {
+  region = "${var.aws_region}"
 }
 
 
