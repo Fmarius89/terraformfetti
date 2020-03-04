@@ -1,6 +1,0 @@
-#----storage/outputs.tf----
-output "endpoint" {
-    value = "${aws_s3_bucket.serverless.website_endpoint}"
-}
-output "bucket" {
-    value = "${aws_s3_bucket.serverless.id}"
