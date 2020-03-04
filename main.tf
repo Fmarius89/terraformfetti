@@ -24,4 +24,5 @@ module "compute" {
 module "bucket" {
     source = "./bucket" 
     project_name = "${var.project_name}"
+    region = "${var.aws_region}"
 }
