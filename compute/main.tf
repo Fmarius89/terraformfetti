@@ -36,7 +36,7 @@ resource "aws_instance" "tf_server" {
      inline = [
        "sudo yum -y install docker",
        "sudo service docker start",
-       "sudo docker run -d -p 80:80 marius:latest"
+       "sudo docker run -d -p 80:80 nginx"
      ]
 }
 
