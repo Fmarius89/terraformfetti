@@ -1,25 +1,47 @@
-#---------storage/main.tf---------
-
 # Create a random id
 resource "random_id" "tf_bucket_id" {
   byte_length = 2
 }
 
 # Create the bucket
-resource "aws_s3_bucket" "tf_code" {
+resource "aws_s3_bucket" "serverless" {
     bucket        = "${var.project_name}-${random_id.tf_bucket_id.dec}"
-    acl           = "private"
-
+    acl           = "public-read"
+    #policy        = "${file("policy.json")}"
     force_destroy =  true
 
-    tags {
-      Name = "tf_bucket_marius"
+    website {
+       index_document = "index.html"
     }
+    tags {
+      Name = "fetti-serverless"
+    }
+
+  provisioner "local-exec" {
+     command = "aws s3 cp /home/ec2-user/aws-serverless-workshops-master/WebApplication/1_StaticWebHosting/website s3://${aws_s3_bucket.serverless.id} --recursive"
+
+}
+ }
+
+provider "aws" {
+  region = "${var.region}"
 }
 
-resource "aws_s3_bucket_public_access_block" "example" {
-  bucket = "${aws_s3_bucket.tf_code.id}"
 
-  block_public_acls   = true
-  block_public_policy = true
+resource "aws_s3_bucket_policy" "serverless" {
+  bucket = "${aws_s3_bucket.serverless.id}"
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": "arn:aws:s3:::${aws_s3_bucket.serverless.id}/*"
+    }
+  ]
+}
+POLICY
 }
